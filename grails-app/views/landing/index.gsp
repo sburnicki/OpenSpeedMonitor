@@ -11,22 +11,48 @@
 
 <img src="${resource(dir: 'images', file: 'OpenSpeedMonitor_dark.svg')}"
      alt="${meta(name: 'app.name')}" style="margin: 20px auto; width: 300px; display: block;"/>
-<div class="card jumbotron">
-    <h1><g:message code="landing.headline" default="Welcome" /></h1>
-    <p><g:message code="landing.headlineText"
-                  default="OpenSpeedMonitor - Open Source Web Performance Monitoring." /></p>
-    <g:if test="${flash.success}">
-        <div class="alert alert-success">
-            <g:message code="de.iteratec.osm.ui.setupwizards.infra.success" default="success" args="${flash.success}"/>
+<div class="row card-well" style="padding: 0 7.5px;">
+    <div class="col-md-8">
+        <div class="card jumbotron">
+            <h1><g:message code="landing.headline" default="Welcome" /></h1>
+            <p><g:message code="landing.headlineText"
+                          default="OpenSpeedMonitor - Open Source Web Performance Monitoring." /></p>
+            <g:if test="${flash.success}">
+                <div class="alert alert-success">
+                    <g:message code="de.iteratec.osm.ui.setupwizards.infra.success" default="success" args="${flash.success}"/>
+                </div>
+            </g:if>
+            <g:if test="${!isSetupFinished}">
+                <a href="/infrastructureSetup" class="btn btn-primary" id="setup-wpt-server-button">
+                    <g:message code="de.iteratec.osm.ui.setupwizards.infra.continueButton" default="continue " />
+                </a>
+            </g:if>
         </div>
-    </g:if>
-    <g:if test="${!isSetupFinished}">
-        <a href="/infrastructureSetup" class="btn btn-primary" id="setup-wpt-server-button">
-            <g:message code="de.iteratec.osm.ui.setupwizards.infra.continueButton" default="continue " />
-        </a>
-    </g:if>
-</div>
+    </div>
 
+    <div class="col-md-4">
+        <div class="card intro-card" style="min-height: 164px;">
+            <sec:ifNotLoggedIn>
+                <h2>
+                    Already have an account? <i class="fa fa-user"></i>
+                </h2>
+                <div style="display: block; text-align: center;">
+                    <p>Log in to use the full functionalities.</p>
+                    <a href="/login" class="btn btn-success" role="button">Log in</a>
+                </div>
+            </sec:ifNotLoggedIn>
+            <sec:ifLoggedIn>
+                <h2>
+                    Hello, <span style="color: #7a43b6;"><sec:username/></span>! <i class="fa fa-user"></i>
+                </h2>
+                <div style="display: block; text-align: center;">
+                    <p>You are currently logged in.</p>
+                    <a href="/logout" class="btn btn-danger" role="button">Log out</a>
+                </div>
+            </sec:ifLoggedIn>
+        </div>
+    </div>
+</div>
 <div class="row card-well">
     <div class="col-md-4">
         <div class="card intro-card">
