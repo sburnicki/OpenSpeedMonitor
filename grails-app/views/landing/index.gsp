@@ -13,7 +13,7 @@
      alt="${meta(name: 'app.name')}" style="margin: 20px auto; width: 300px; display: block;"/>
 <div class="row card-well" style="padding: 0 7.5px;">
     <div class="col-md-8">
-        <div class="card jumbotron">
+        <div class="card jumbotron" style="min-height: 265px;">
             <h1><g:message code="landing.headline" default="Welcome" /></h1>
             <p><g:message code="landing.headlineText"
                           default="OpenSpeedMonitor - Open Source Web Performance Monitoring." /></p>
@@ -29,29 +29,66 @@
             </g:if>
         </div>
     </div>
-
+    %{-- Start of landing page login field --}%
     <div class="col-md-4">
-        <div class="card intro-card" style="min-height: 164px;">
+        <div class="card intro-card" style="min-height: 265px;">
             <sec:ifNotLoggedIn>
-                <h2>
-                    Already have an account? <i class="fa fa-user"></i>
-                </h2>
-                <div style="display: block; text-align: center;">
-                    <p>Log in to use the full functionalities.</p>
-                    <a href="/login" class="btn btn-success" role="button">Log in</a>
-                </div>
+                <section id="login">
+                    <h2><g:message code="springSecurity.login.header" locale="${lang}"/><i class="fa fa-user"></i></h2>
+                    <form id='loginForm' class='form-horizontal' action="${postUrl}" method='POST' autocomplete='off' style="width: 30em;">
+                        <fieldset>
+                            <div class="form-group">
+                                <label for='username' class="col-md-6 control-label">
+                                    <g:message code="springSecurity.login.username.label" locale="${lang}"/>:
+                                </label>
+                                <div class='col-md-6'>
+                                    <input type='text' class='form-control' name='username' id='username'/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for='password' class="control-label col-md-6">
+                                    <g:message code="springSecurity.login.password.label" locale="${lang}"/>:
+                                </label>
+                                <div class='col-md-6'>
+                                    <input type='password' class='form-control' name='password' id='password'/>
+                                </div>
+                            </div>
+
+                            <div id="remember_me_holder" class="form-group">
+                                <label for='remember_me' class="control-label col-md-6">
+                                    <g:message code="springSecurity.login.remember.me.label" locale="${lang}"/>
+                                </label>
+                                <div class="col-md-6 checkbox">
+                                    <bs:checkBox name="${rememberMeParameter}" value="${hasCookie}" id="remember_me" />
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div class="clearfix">
+                            <input type='submit' id="submit" class="btn btn-success pull-right"
+                                   value='${message([code:'springSecurity.login.button', locale:lang])}'/>
+                            <g:if test="${grailsApplication.config.getProperty('grails.mail.disabled')?.toLowerCase() == "false"}">
+                                <span class="forgot-link">
+                                    <g:link controller='register' action='forgotPassword'><g:message code='spring.security.ui.login.forgotPassword'/></g:link>
+                                </span>
+                            </g:if>
+                        </div>
+                    </form>
+                </section>
             </sec:ifNotLoggedIn>
             <sec:ifLoggedIn>
                 <h2>
-                    Hello, <span style="color: #7a43b6;"><sec:username/></span>! <i class="fa fa-user"></i>
+                    Logged in as <span style="color: #5c3c91;"><sec:username/></span>! <i class="fa fa-user"></i>
                 </h2>
-                <div style="display: block; text-align: center;">
-                    <p>You are currently logged in.</p>
+                <div style="display: block; text-align: center; padding: 45px;">
+                    <p>Your authorities are: <span style="color: #5c3c91"><sec:loggedInUserInfo field="authorities"/></span></p>
+                    <br>
                     <a href="/logout" class="btn btn-danger" role="button">Log out</a>
                 </div>
             </sec:ifLoggedIn>
         </div>
     </div>
+    %{-- End of landing page login field --}%
 </div>
 <div class="row card-well">
     <div class="col-md-4">
