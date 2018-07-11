@@ -12,6 +12,6 @@ jdk:
 jobs:
   include:
     - stage: Tests
-      script: ./gradlew integrationTest --tests de.**.* --stacktrace --scan
+      script: ./gradlew integrationTest --tests de.**.* --debug --full-stacktrace
     - stage: Tests
       script: ./gradlew -x jasmineRun test
