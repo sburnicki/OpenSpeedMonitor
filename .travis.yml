@@ -9,6 +9,7 @@ cache:
 language: groovy
 jdk:
   - openjdk8
+installation: true
 jobs:
   include:
     - stage: Tests
@@ -16,7 +17,6 @@ jobs:
     - stage: Tests
       script: ./gradlew -x jasmineRun test
     - stage: Tests
-      installation: true
       script: date
 #after_failure:
 #  # dump the last 2000 lines of our build, and hope the error is in that!
