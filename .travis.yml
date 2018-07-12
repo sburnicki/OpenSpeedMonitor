@@ -1,5 +1,6 @@
 before_cache:
   - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
+dist: precise
 cache:
   directories:
     - node_modules
@@ -8,7 +9,7 @@ cache:
     - $HOME/.gradle/wrapper/
 language: groovy
 jdk:
-  - openjdk7
+  - openjdk8
 
 # Skip the install step. Don't `go get` dependencies. Only build with the code
 # in vendor/
