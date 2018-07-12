@@ -1,13 +1,13 @@
 before_cache:
   - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
 cache:
-  directories:
-    - node_modules
-    - frontend/node_modules
-    - build/npm
-    - $HOME/.npm
-    - $HOME/.gradle/caches/
-    - $HOME/.gradle/wrapper/
+#  directories:
+#    - node_modules
+#    - frontend/node_modules
+#    - build/npm
+#    - $HOME/.npm
+#    - $HOME/.gradle/caches/
+#    - $HOME/.gradle/wrapper/
 language: groovy
 jdk:
   - openjdk8
@@ -23,7 +23,7 @@ notifications:
 jobs:
   include:
     - stage: Tests
-      script: ./gradlew integrationTest --tests de.**.* --full-stacktrace
+      script: ./gradlew clean integrationTest --tests de.**.* --full-stacktrace
     - stage: Tests
       script: ./gradlew -x jasmineRun test
     - stage: Tests
