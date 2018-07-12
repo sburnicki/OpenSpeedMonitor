@@ -4,6 +4,8 @@ cache:
   directories:
     - node_modules
     - frontend/node_modules
+    - build/npm
+    - $HOME/.npm
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
 language: groovy
@@ -29,4 +31,4 @@ jobs:
       script: date
 after_failure:
   # dump the last 2000 lines of our build, and hope the error is in that!
-  - cat file:///home/travis/build/iteratec/OpenSpeedMonitor/build/test-results/integrationTest/index.html
+  - cat $HOME/build/iteratec/OpenSpeedMonitor/build/test-results/integrationTest/index.html
