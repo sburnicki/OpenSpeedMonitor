@@ -25,6 +25,7 @@ jobs:
     - stage: Tests
       script: ./gradlew -x jasmineRun test
     - stage: Tests
+      install: skip
       script: date
 #after_failure:
 #  # dump the last 2000 lines of our build, and hope the error is in that!
