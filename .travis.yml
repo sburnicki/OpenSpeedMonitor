@@ -8,7 +8,7 @@ cache:
     - $HOME/.gradle/wrapper/
 language: groovy
 jdk:
-  - openjdk6
+  - openjdk7
 
 # Skip the install step. Don't `go get` dependencies. Only build with the code
 # in vendor/
