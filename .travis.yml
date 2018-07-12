@@ -1,6 +1,5 @@
 before_cache:
   - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
-installation: true
 cache:
   directories:
     - node_modules
@@ -10,6 +9,15 @@ cache:
 language: groovy
 jdk:
   - openjdk8
+
+# Skip the install step. Don't `go get` dependencies. Only build with the code
+# in vendor/
+install: true
+
+# Don't email me the results of the test runs.
+notifications:
+  email: false
+
 jobs:
   include:
     - stage: Tests
