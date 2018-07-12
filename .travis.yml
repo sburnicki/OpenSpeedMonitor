@@ -15,3 +15,8 @@ jobs:
       script: ./gradlew integrationTest --tests de.**.* --full-stacktrace
     - stage: Tests
       script: ./gradlew -x jasmineRun test
+    - stage: Tests
+      script: date
+#after_failure:
+#  # dump the last 2000 lines of our build, and hope the error is in that!
+#  - tail file:///home/travis/build/iteratec/OpenSpeedMonitor/build/test-results/integrationTest/index.html
