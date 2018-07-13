@@ -39,7 +39,7 @@ class CloseExpiredUpdateEventsIntegrationSpec extends NonTransactionalIntegratio
 
     CsiAggregationUtilService csiAggregationUtilService
     CsiAggregationDaoService csiAggregationDaoService
-    InMemoryConfigService inMemoryConfigService = Stub(InMemoryConfigService.class)
+    InMemoryConfigService inMemoryConfigService
 
     CsiAggregationInterval weeklyInterval
     CsiAggregationInterval dailyInterval
