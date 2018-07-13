@@ -16,14 +16,13 @@
 */
 
 package de.iteratec.osm
-
-import grails.gorm.transactions.Transactional
-
 /**
  * InMemoryConfigService
  * A service class encapsulates the core business logic of a Grails application
  */
 class InMemoryConfigService {
+
+    static transactional = true
 
     def grailsApplication
 
