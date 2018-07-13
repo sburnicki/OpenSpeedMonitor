@@ -22,8 +22,6 @@ package de.iteratec.osm
  */
 class InMemoryConfigService {
 
-    static transactional = true
-
     def grailsApplication
 
     static final Boolean DEFAULT_MEASUREMENTS_GENERALLY_ENABLED = false
