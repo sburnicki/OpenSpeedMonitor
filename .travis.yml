@@ -31,4 +31,5 @@ jobs:
       script: date
 after_failure:
   # dump the last 2000 lines of our build, and hope the error is in that!
-  - cat $HOME/build/iteratec/OpenSpeedMonitor/build/test-results/integrationTest/index.html
+  - cat  ~/iteratec/OpenSpeedMonitor/build/spock-reports/de.iteratec.osm.report.chart.CloseExpiredUpdateEventsIntegrationSpec.html
+
