@@ -23,13 +23,7 @@ notifications:
 jobs:
   include:
     - stage: Tests
-      script: ./gradlew clean integrationTest --tests de.**.* --full-stacktrace
+      script: ./gradlew clean integrationTest --tests "de.iteratec.osm.csi.**" && ./gradlew clean integrationTest --tests "de.iteratec.osm.report.**"  --tests "de.iteratec.osm.result.**"  --tests "de.iteratec.osm.measurement.**" 
     - stage: Tests
       script: ./gradlew -x jasmineRun test
-    - stage: Tests
-      install: skip
-      script: date
-after_failure:
-  # dump the last 2000 lines of our build, and hope the error is in that!
-  - cat  ~/iteratec/OpenSpeedMonitor/build/spock-reports/de.iteratec.osm.report.chart.CloseExpiredUpdateEventsIntegrationSpec.html
 
